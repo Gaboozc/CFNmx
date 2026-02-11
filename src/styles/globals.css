@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color Palette -CFN Coacalco */
+  --color-primary-50: #e8f2fd;
+  --color-primary-100: #d1e5fb;
+  --color-primary-200: #a3cbf7;
+  --color-primary-300: #5fa3f0;
+  --color-primary-400: #1F6FD8;
+  --color-primary-500: #1a5fba;
+  --color-primary-600: #0E3465;
+  --color-primary-700: #0a2549;
+  
+  --color-wine-50: #faf5f6;
+  --color-wine-100: #f3e9eb;
+  --color-wine-200: #e8d4d8;
+  --color-wine-300: #d4a8b1;
+  --color-wine-400: #b97685;
+  --color-wine-500: #9d4d5f;
+  --color-wine-600: #7d3d4c;
+  --color-wine-700: #5f2f3a;
+  
+  --color-blue-50: #f0f4f8;
+  --color-blue-100: #d9e6f2;
+  --color-blue-200: #b3cde0;
+  --color-blue-300: #7aa6c9;
+  --color-blue-400: #4a7fa1;
+  --color-blue-500: #2d5a7b;
+  --color-blue-600: #1e3a52;
+  --color-blue-700: #132433;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-sans);
+  color: rgb(30 30 30);
+  background: rgb(255 255 255);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(250 250 250);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F6FD8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0E3465;
+}
