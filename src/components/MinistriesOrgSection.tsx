@@ -23,6 +23,12 @@ interface Ministry {
   galleryImages: string[];
 }
 
+interface MinistryGroup {
+  title: string;
+  description: string;
+  ministries: string[];
+}
+
 const ministryDetails: Record<string, Ministry> = {
   "Alabanza y Adoracion": {
     icon: Music,
@@ -110,31 +116,37 @@ const ministryDetails: Record<string, Ministry> = {
   }
 };
 
-const ministryGroups = [
+const ministryGroups: MinistryGroup[] = [
   {
-    title: "Generacional",
-    description: "Acompanar cada etapa de la vida",
-    ministries: ["Ninos", "Jovenes"]
+    title: "Comunion",
+    description: "Llamado y respuesta al evangelio",
+    ministries: ["Evangelismo"]
   },
   {
-    title: "Celebracion",
-    description: "Adoracion y encuentro congregacional",
+    title: "Adoracion",
+    description: "Adoracion y vida en comunidad",
     ministries: ["Alabanza y Adoracion"]
   },
   {
-    title: "Hospitalidad",
-    description: "Cuidar y servir con alegria",
+    title: "Servicio",
+    description: "Acompanamiento y bienvenida",
     ministries: ["Hospitalidad"]
   },
   {
+    title: "Evangelismo",
+    description: "Formacion y discipulado activo",
+    ministries: ["Ensenanza"]
+  },
+  {
     title: "Discipulado",
-    description: "Formacion y alcance misionero",
-    ministries: ["Ensenanza", "Evangelismo"]
+    description: "Crecimiento generacional y vocacional",
+    ministries: ["Ninos", "Jovenes"]
   }
 ];
 
 export function MinistriesOrgSection() {
   const [selectedMinistry, setSelectedMinistry] = useState<Ministry | null>(null);
+  const [selectedGroup, setSelectedGroup] = useState<MinistryGroup | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -169,68 +181,54 @@ export function MinistriesOrgSection() {
           <span className="inline-block px-4 py-1.5 bg-wine-100 text-wine-700 rounded-full mb-4">
             Ministerios
           </span>
-          <h2 className="mb-6 text-gray-900">Organigrama de Servicio</h2>
+          <h2 className="mb-6 text-gray-900">Pilares de nuestra Iglesia</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Conoce nuestras areas y descubre donde puedes servir. Cada ministerio aporta su don para
-            edificar la iglesia y alcanzar a mas familias.
+            Cada persona aporta su talento, pasion y llamado para servir en los diferentes ministerios que forman el cuerpo de Cristo en CFN. Juntos, edificamos una iglesia unida y comprometida para establecer el reino de Dios en la tierra.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {ministryGroups.map((group, index) => (
-            <motion.div
+            <motion.button
               key={group.title}
+              type="button"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 h-full"
+              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 h-full text-left hover:shadow-xl transition-all"
+              onClick={() => {
+                setSelectedGroup(group);
+                setSelectedMinistry(ministryDetails[group.ministries[0]]);
+                setCurrentImageIndex(0);
+              }}
             >
               <div className="mb-6">
                 <h3 className="text-gray-900 mb-2">{group.title}</h3>
                 <p className="text-sm text-gray-600">{group.description}</p>
               </div>
-              <div className="space-y-4">
-                {group.ministries.map((ministryName) => {
-                  const ministry = ministryDetails[ministryName];
-                  return (
-                    <button
-                      key={ministry.title}
-                      type="button"
-                      onClick={() => {
-                        setSelectedMinistry(ministry);
-                        setCurrentImageIndex(0);
-                      }}
-                      className="w-full text-left bg-white rounded-2xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center"
-                          style={{ background: ministry.color }}
-                        >
-                          <ministry.icon className="text-white" size={24} />
-                        </div>
-                        <div>
-                          <h4 className="text-gray-900">{ministry.title}</h4>
-                          <p className="text-sm text-gray-600">{ministry.description}</p>
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
+              <div className="text-sm text-gray-600">
+                {group.ministries.map((ministryName, ministryIndex) => (
+                  <div key={ministryName}>
+                    {ministryName}{ministryIndex < group.ministries.length - 1 ? "," : ""}
+                  </div>
+                ))}
               </div>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
       </div>
 
-      {selectedMinistry && (
+      {selectedMinistry && selectedGroup && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          onClick={() => setSelectedMinistry(null)}
+          onClick={() => {
+            setSelectedMinistry(null);
+            setSelectedGroup(null);
+          }}
         >
           <motion.div
             initial={{ scale: 0.9, y: 20 }}
@@ -248,7 +246,10 @@ export function MinistriesOrgSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
               <button
-                onClick={() => setSelectedMinistry(null)}
+                onClick={() => {
+                  setSelectedMinistry(null);
+                  setSelectedGroup(null);
+                }}
                 className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
               >
                 <X className="text-white" size={24} />
@@ -269,6 +270,30 @@ export function MinistriesOrgSection() {
             </div>
 
             <div className="p-6 md:p-8">
+              <div className="flex flex-wrap gap-3 mb-8">
+                {selectedGroup.ministries.map((ministryName) => {
+                  const ministry = ministryDetails[ministryName];
+                  const isActive = selectedMinistry.title === ministry.title;
+                  return (
+                    <button
+                      key={ministry.title}
+                      type="button"
+                      onClick={() => {
+                        setSelectedMinistry(ministry);
+                        setCurrentImageIndex(0);
+                      }}
+                      className={`px-4 py-2 rounded-full border transition-all text-sm ${
+                        isActive
+                          ? "border-transparent text-white"
+                          : "border-gray-200 text-gray-700 hover:border-gray-300"
+                      }`}
+                      style={isActive ? { background: ministry.color } : undefined}
+                    >
+                      {ministry.title}
+                    </button>
+                  );
+                })}
+              </div>
               <div className="prose prose-lg max-w-none mb-8">
                 <p className="text-gray-700 leading-relaxed">{selectedMinistry.fullDescription}</p>
               </div>

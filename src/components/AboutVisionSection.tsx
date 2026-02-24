@@ -5,7 +5,7 @@ const visionPoints = [
   {
     icon: Target,
     title: "Vision",
-    description: "Bendecir a todas las familias de la tierra con el evangelio de Jesucristo."
+    description: "Genesis 12:3  y serán benditas en ti todas las familias de la tierra."
   },
   {
     icon: Sparkles,
@@ -33,10 +33,10 @@ export function AboutVisionSection() {
           <span className="inline-block px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full mb-4">
             About Us
           </span>
-          <h2 className="mb-6 text-gray-900">Vision en una frase</h2>
+          <h2 className="mb-6 text-gray-900">¿Qué es CFN?</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Somos una iglesia que existe para amar a Dios, cuidar a las familias y formar discipulos
-            que impacten su entorno con el Reino.
+            CFN es mi casa, donde Cristo edifica a mi familia, somos formados como siervos, adoramos al Cordero de Dios
+            y hombro a hombro establecemos su reino.
           </p>
         </motion.div>
 

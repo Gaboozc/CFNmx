@@ -24,8 +24,9 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Inicio", to: "/" },
-    { name: "Ministerios", to: "/ministerios" },
+    { name: "Organización", to: "/ministerios" },
     { name: "Eventos", to: "/eventos" },
+    { name: "¿Dónde te encuentras?", to: "/crecimientos" },
     { name: "Recursos", to: "/recursos" },
     { name: "Conecta", to: "/conecta" },
     { name: "Anuncios", to: "/anuncios" }
