@@ -8,7 +8,7 @@ export function HeroSection() {
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="img/principal/p.MOV"
+          src="/img/principal/p.MOV"
           autoPlay
           loop
           muted
