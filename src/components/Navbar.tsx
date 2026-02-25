@@ -26,7 +26,7 @@ export function Navbar() {
     { name: "Inicio", to: "/" },
     { name: "Organización", to: "/ministerios" },
     { name: "Eventos", to: "/eventos" },
-    { name: "¿Dónde te encuentras?", to: "/crecimientos" },
+    { name: "¿Dónde te encuentras?", to: "/crecimiento" },
     { name: "Recursos", to: "/recursos" },
     { name: "Conecta", to: "/conecta" },
     { name: "Anuncios", to: "/anuncios" }

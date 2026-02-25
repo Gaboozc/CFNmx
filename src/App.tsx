@@ -5,6 +5,7 @@ import { MinistriesPage } from "./pages/MinistriesPage";
 import { EventsPage } from "./pages/EventsPage";
 import { ResourcesPage } from "./pages/ResourcesPage";
 import { ConnectPage } from "./pages/ConnectPage";
+import { CrecimientoPage } from "./pages/CrecimientoPage";
 import { AnnouncementsRoute } from "./pages/AnnouncementsRoute";
 import { PrivacyRoute } from "./pages/PrivacyRoute";
 import { WhatsAppButton } from "./components/WhatsAppButton";
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/ministerios" element={<MinistriesPage />} />
+        <Route path="/crecimiento" element={<CrecimientoPage />} />
         <Route path="/eventos" element={<EventsPage />} />
         <Route path="/recursos" element={<ResourcesPage />} />
         <Route path="/conecta" element={<ConnectPage />} />
